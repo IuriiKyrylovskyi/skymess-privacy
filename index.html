@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SKYMESS — Privacy Policy</title>
     <style>
+      :root {
+        --bg-gradient: linear-gradient(180deg, #aaddff 0%, #ffffff 100%);
+        --accent-blue: #4a9eff;
+        --text-dark: #2c3e50;
+        --text-muted: #5a7d9a;
+        --card-bg: rgba(255, 255, 255, 0.2);
+        --border-color: #d1e8ff;
+      }
+
       * {
         box-sizing: border-box;
         margin: 0;
@@ -13,59 +22,133 @@
 
       body {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: #0f1829;
-        color: #c8d8f0;
+        background: var(--bg-gradient);
+        background-attachment: fixed;
+        color: var(--text-dark);
         line-height: 1.7;
         padding: 2rem 1rem;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      /* Animated Plane Background */
+      .plane-asset {
+        position: fixed;
+        z-index: -1;
+        opacity: 0.2;
+        pointer-events: none;
+        filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.1));
+      }
+
+      @keyframes flyRight {
+        from {
+          /* transform: translate(-15vw, 0) rotate(var(--rot)); */
+          transform: translate(-15vw, 0);
+        }
+        to {
+          /* transform: translate(115vw, -5vh) rotate(var(--rot)); */
+          transform: translate(115vw, -5vh);
+        }
+      }
+
+      @keyframes flyLeft {
+        from {
+          /* transform: translate(115vw, 0) rotate(var(--rot)); */
+          transform: translate(115vw, 0) rotate(180deg);
+        }
+        to {
+          /* transform: translate(-15vw, 5vh) rotate(var(--rot)); */
+          transform: translate(-15vw, 5vh) rotate(180deg);
+        }
+      }
+
+      .p-blue {
+        top: 10%;
+        width: 80px;
+        /* --rot: 10deg; */
+        animation: flyRight 35s linear infinite;
+      }
+      .p-red {
+        top: 25%;
+        width: 60px;
+        /* --rot: 190deg; */
+        animation: flyLeft 25s linear infinite;
+        animation-delay: 2s;
+      }
+      .p-orange {
+        top: 45%;
+        width: 90px;
+        /* --rot: 15deg; */
+        animation: flyRight 45s linear infinite;
+        animation-delay: 5s;
+      }
+      .p-violet {
+        top: 65%;
+        width: 70px;
+        /* --rot: 170deg; */
+        animation: flyLeft 32s linear infinite;
+      }
+      .p-green {
+        top: 80%;
+        width: 50px;
+        /* --rot: -5deg; */
+        animation: flyRight 38s linear infinite;
+        animation-delay: 1s;
       }
 
       .container {
         max-width: 720px;
         margin: 0 auto;
+        background: var(--card-bg);
+        backdrop-filter: blur(10px);
+        padding: 2.5rem;
+        border-radius: 24px;
+        box-shadow: 0 10px 30px rgba(74, 158, 255, 0.1);
+        border: 1px solid var(--border-color);
       }
 
       header {
         text-align: center;
         margin-bottom: 3rem;
         padding-bottom: 2rem;
-        border-bottom: 1px solid #1e2d4a;
+        border-bottom: 1px solid var(--border-color);
       }
 
       .logo {
         font-size: 2rem;
         letter-spacing: 0.3em;
-        color: #4a9eff;
+        color: var(--accent-blue);
         font-weight: 700;
         margin-bottom: 0.5rem;
       }
 
       .tagline {
-        color: #6b8cb0;
+        color: var(--text-muted);
         font-size: 0.9rem;
       }
 
       h1 {
         font-size: 1.6rem;
-        color: #ffffff;
+        color: var(--text-dark);
         margin-bottom: 0.4rem;
       }
 
       h2 {
         font-size: 1.1rem;
-        color: #4a9eff;
+        color: var(--accent-blue);
         margin: 2rem 0 0.8rem;
         padding-bottom: 0.3rem;
-        border-bottom: 1px solid #1e2d4a;
+        border-bottom: 1px solid var(--border-color);
       }
 
       p {
         margin-bottom: 1rem;
-        color: #a0b8d4;
+        color: var(--text-dark);
       }
 
       ul {
         margin: 0.5rem 0 1rem 1.5rem;
-        color: #a0b8d4;
+        color: var(--text-dark);
       }
 
       ul li {
@@ -74,14 +157,14 @@
 
       .updated {
         font-size: 0.85rem;
-        color: #6b8cb0;
+        color: var(--text-muted);
         margin-bottom: 2rem;
       }
 
       .highlight-box {
-        background: #0f1829;
-        border: 1px solid #1e2d4a;
-        border-left: 3px solid #4a9eff;
+        background: rgba(74, 158, 255, 0.05);
+        border: 1px solid var(--border-color);
+        border-left: 3px solid var(--accent-blue);
         border-radius: 6px;
         padding: 1rem 1.2rem;
         margin: 1rem 0;
@@ -92,33 +175,39 @@
         font-size: 0.95rem;
       }
 
+      .table-container {
+        overflow-x: auto;
+        margin: 1rem 0;
+        background: rgba(255, 255, 255, 0.5);
+      }
+
       table {
         width: 100%;
         border-collapse: collapse;
-        margin: 1rem 0;
         font-size: 0.9rem;
+        min-width: 450px;
       }
 
       th {
-        background: #0f1829;
-        color: #4a9eff;
+        background: #f0f7ff;
+        color: var(--accent-blue);
         padding: 0.6rem 1rem;
         text-align: left;
-        border: 1px solid #1e2d4a;
+        border: 1px solid var(--border-color);
       }
 
       td {
         padding: 0.6rem 1rem;
-        border: 1px solid #1e2d4a;
-        color: #a0b8d4;
+        border: 1px solid var(--border-color);
+        color: var(--text-dark);
       }
 
       tr:nth-child(even) td {
-        background: #0a1220;
+        background: rgba(255, 255, 255, 0.5);
       }
 
       a {
-        color: #4a9eff;
+        color: var(--accent-blue);
         text-decoration: none;
       }
 
@@ -129,18 +218,35 @@
       footer {
         margin-top: 4rem;
         padding-top: 2rem;
-        border-top: 1px solid #1e2d4a;
+        border-top: 1px solid var(--border-color);
         text-align: center;
-        color: #6b8cb0;
+        color: var(--text-muted);
         font-size: 0.85rem;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          padding: 1.5rem;
+          border-radius: 16px;
+        }
+        .plane-asset {
+          opacity: 0.1;
+        }
       }
     </style>
   </head>
   <body>
+    <img src="2-blue.png" class="plane-asset p-blue" alt="" />
+    <img src="2-red.png" class="plane-asset p-red" alt="" />
+    <img src="2-orange.jpg" class="plane-asset p-orange" alt="" />
+    <img src="2-violet.png" class="plane-asset p-violet" alt="" />
+    <img src="2-green.jpg" class="plane-asset p-green" alt="" />
+
     <div class="container">
       <header>
-        <div class="logo">✈ SKYMESS</div>
+        <div class="logo">SKYMESS</div>
         <div class="tagline">Air Traffic Control Game</div>
+        <div class="logo">✈</div>
       </header>
 
       <h1>Privacy Policy</h1>
@@ -170,43 +276,45 @@
         you. This account has no name, no email address, and no password.
       </p>
 
-      <table>
-        <tr>
-          <th>Data</th>
-          <th>Purpose</th>
-          <th>Linked to you?</th>
-        </tr>
-        <tr>
-          <td>Anonymous user ID (UUID)</td>
-          <td>Identify your account across sessions</td>
-          <td>Yes — but not to your identity</td>
-        </tr>
-        <tr>
-          <td>Level progress (current level)</td>
-          <td>Save your game progress</td>
-          <td>Yes</td>
-        </tr>
-        <tr>
-          <td>Premium status</td>
-          <td>Determine which levels you can access</td>
-          <td>Yes</td>
-        </tr>
-        <tr>
-          <td>Purchase timestamp</td>
-          <td>Record when a purchase was made</td>
-          <td>Yes</td>
-        </tr>
-        <tr>
-          <td>Platform (iOS/Android/etc.)</td>
-          <td>Technical compatibility</td>
-          <td>Yes</td>
-        </tr>
-        <tr>
-          <td>Advertising ID (free users only)</td>
-          <td>Show relevant ads via Google AdMob</td>
-          <td>Yes</td>
-        </tr>
-      </table>
+      <div class="table-container">
+        <table>
+          <tr>
+            <th>Data</th>
+            <th>Purpose</th>
+            <th>Linked to you?</th>
+          </tr>
+          <tr>
+            <td>Anonymous user ID (UUID)</td>
+            <td>Identify your account across sessions</td>
+            <td>Yes — but not to your identity</td>
+          </tr>
+          <tr>
+            <td>Level progress (current level)</td>
+            <td>Save your game progress</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Premium status</td>
+            <td>Determine which levels you can access</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Purchase timestamp</td>
+            <td>Record when a purchase was made</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Platform (iOS/Android/etc.)</td>
+            <td>Technical compatibility</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Advertising ID (free users only)</td>
+            <td>Show relevant ads via Google AdMob</td>
+            <td>Yes</td>
+          </tr>
+        </table>
+      </div>
 
       <p>
         We do <strong>not</strong> collect: your name, email address, phone number, location,
@@ -216,39 +324,43 @@
       <h2>3. Third-Party Services</h2>
       <p>We use the following third-party services to operate SKYMESS:</p>
 
-      <table>
-        <tr>
-          <th>Service</th>
-          <th>Purpose</th>
-          <th>Privacy Policy</th>
-        </tr>
-        <tr>
-          <td>Supabase</td>
-          <td>Stores your anonymous account, level progress, and premium status</td>
-          <td><a href="https://supabase.com/privacy" target="_blank">supabase.com/privacy</a></td>
-        </tr>
-        <tr>
-          <td>RevenueCat</td>
-          <td>Processes and validates in-app purchases</td>
-          <td>
-            <a href="https://www.revenuecat.com/privacy" target="_blank">revenuecat.com/privacy</a>
-          </td>
-        </tr>
-        <tr>
-          <td>Google AdMob</td>
-          <td>Shows ads to free users to support the game</td>
-          <td>
-            <a href="https://policies.google.com/privacy" target="_blank"
-              >policies.google.com/privacy</a
-            >
-          </td>
-        </tr>
-        <tr>
-          <td>Apple App Store / Google Play</td>
-          <td>Processes payments for in-app purchases</td>
-          <td>Apple / Google privacy policies</td>
-        </tr>
-      </table>
+      <div class="table-container">
+        <table>
+          <tr>
+            <th>Service</th>
+            <th>Purpose</th>
+            <th>Privacy Policy</th>
+          </tr>
+          <tr>
+            <td>Supabase</td>
+            <td>Stores your anonymous account, level progress, and premium status</td>
+            <td><a href="https://supabase.com/privacy" target="_blank">supabase.com/privacy</a></td>
+          </tr>
+          <tr>
+            <td>RevenueCat</td>
+            <td>Processes and validates in-app purchases</td>
+            <td>
+              <a href="https://www.revenuecat.com/privacy" target="_blank"
+                >revenuecat.com/privacy</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>Google AdMob</td>
+            <td>Shows ads to free users to support the game</td>
+            <td>
+              <a href="https://policies.google.com/privacy" target="_blank"
+                >policies.google.com/privacy</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>Apple App Store / Google Play</td>
+            <td>Processes payments for in-app purchases</td>
+            <td>Apple / Google privacy policies</td>
+          </tr>
+        </table>
+      </div>
 
       <h2>4. Advertising (Free Users Only)</h2>
       <p>
@@ -330,11 +442,7 @@
       </p>
 
       <footer>
-        <p>© 2026 SKYMESS. All rights reserved.</p>
-        <!-- <p style="margin-top: 0.5rem">
-          <a href="index.html">Home</a> ·
-          <a href="privacy.html">Privacy Policy</a>
-        </p> -->
+        <p>© 2026 BLUESky. All rights reserved.</p>
       </footer>
     </div>
   </body>
